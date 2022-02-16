@@ -1,0 +1,14 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h3>Some errors occured :</h3>
+    <ul>
+        {% for error in violations %}
+            <li>{{ error.message }}</li>
+        {% endfor %}
+    </ul>
+
+
+    <h3>The content of <code>$violations</code> looks like :</h3>
+    {{ dump(violations) }}
+{% endblock %}

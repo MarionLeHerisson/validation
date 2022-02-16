@@ -1,0 +1,5 @@
+#App\Entity\Pokemon:
+#  constraints:
+#    - App\Validator\Constraints\ContainsAlphanumeric:
+#        message: 'The name of this pokémon is not valid !'
+#        path: 'name'
