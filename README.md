@@ -1,5 +1,5 @@
 # validation
-> Exemples et tests pour la conférence "Comment valider dynamiquement de la donnée"
+> Exemples et tests pour la conférence [Comment valider dynamiquement de la donnée](https://speakerdeck.com/marionleherisson/valider-dynamiquement-de-la-donnee-avec-symfony)
 
 ### Prérequis 
 - PHP 8.1+ & ses extensions (php8.1-xml, etc)
