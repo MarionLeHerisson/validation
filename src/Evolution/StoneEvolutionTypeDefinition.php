@@ -16,10 +16,9 @@ class StoneEvolutionTypeDefinition implements EvolutionDefinitionInterface
         return [
             new Assert\Collection([
                 'stones' => [
-                    new Assert\Collection([
+                    new Assert\All([
                         new Assert\Type('string'),
-                    ],
-                    allowExtraFields: true)
+                    ])
                 ],
             ]),
         ];
