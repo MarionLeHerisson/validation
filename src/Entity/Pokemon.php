@@ -5,6 +5,7 @@ namespace App\Entity;
 use App\Enum\Elements;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
+use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
 use Symfony\Component\Validator\Context\ExecutionContextInterface;
 
@@ -12,14 +13,17 @@ use Symfony\Component\Validator\Context\ExecutionContextInterface;
 #[Assert\EnableAutoMapping()]
 class Pokemon
 {
-    #[Column(type: "integer")]
+    #[ORM\Id]
+    #[ORM\GeneratedValue]
+    #[ORM\Column]
     private string $id;
 
     #[Assert\NotBlank]
     #[Assert\Length(
-        min: 3
+        min: 3,
+        max: 10
     )]
-    #[Column(type: "string", length: 25)]
+    #[ORM\Column(type: "string", length: 25)]
     private string $name;
 
     #[Assert\Choice(

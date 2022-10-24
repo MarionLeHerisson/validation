@@ -2,11 +2,11 @@
 
 namespace App\Entity;
 
-use App\Validator\Constraints\EvolutionType;
+use App\Validator\Constraints as CustomAssert;
 use Symfony\Component\Validator\Constraints as Assert;
 use Symfony\Component\Validator\Context\ExecutionContextInterface;
 
-#[EvolutionType]
+#[CustomAssert\EvolutionType]
 class Evolution
 {
     private const EVOLUTION_TYPES = [

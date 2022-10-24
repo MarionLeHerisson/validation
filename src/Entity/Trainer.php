@@ -10,15 +10,15 @@ class Trainer
     #[Assert\Regex(
         pattern: '/\d/',
         message: 'Your name cannot contain a number', 
-//        match: false,
+        match: false,
     )]
     protected string $name;
 
-//    #[Assert\AtLeastOneOf([
-//        new Assert\Length(min: 10),
-//        new Assert\Email(),
-//    ])]
-//    protected string $userName;
+    #[Assert\AtLeastOneOf([
+        new Assert\Length(min: 10),
+        new Assert\Email(),
+    ])]
+    protected string $userName;
 
     protected array $badges;
 

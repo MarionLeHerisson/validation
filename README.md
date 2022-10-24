@@ -6,4 +6,5 @@
 - Symfony & symfony-cli
 - Composer
 
-Lancer `symfony server:start` et se rendre sur [http://127.0.0.1:8000/pokemon](http://127.0.0.1:8000/pokemon)
+Installer le projet avec `composer install`.
+Lancer `symfony server:start` et se rendre sur [http://127.0.0.1:8000/evolve](http://127.0.0.1:8000/evolve)

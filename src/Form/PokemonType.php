@@ -2,7 +2,9 @@
 
 namespace App\Form;
 
+use App\Entity\Element;
 use App\Entity\Pokemon;
+use App\Entity\Type;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
@@ -26,9 +28,9 @@ class PokemonType extends AbstractType
                     new Length(['min' => 3]),
                 ],
             ])
-            ->add('type', EntityType::class, [
+            ->add('element', EntityType::class, [
 //                'choices' => array_merge(['Select a type' => 'not_selected'], TypeNames::ALL_TYPES),
-                'class' => Type::class,
+                'class' => Element::class,
                 'choice_label' => 'name',   // 'fire', 'water', 'plant' etc.
             ])
             ->add('attacks', CollectionType::class, [

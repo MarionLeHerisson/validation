@@ -17,7 +17,7 @@ class EvolutionController extends AbstractController
         $levelEvolution = [
             'type' => 'level',
             'options' => [
-                'level' => 'FOO',
+                'level' => 32,
             ],
         ];
 
@@ -40,8 +40,9 @@ class EvolutionController extends AbstractController
         ];
         
         $evoliEvolution = new Evolution();
-        $evoliEvolution->setType($stoneEvolution['type']);
-        $evoliEvolution->setOptions($stoneEvolution['options']);
+        // Replace the evolution below with one of the examples above
+        $evoliEvolution->setType($levelEvolution['type']);
+        $evoliEvolution->setOptions($levelEvolution['options']);
 
         $violations = $validator->validate($evoliEvolution);
 
@@ -56,7 +57,7 @@ class EvolutionController extends AbstractController
 }
 
 /*
-These are valid options :
+These are valid inputs :
 
 {
     "type": "level",

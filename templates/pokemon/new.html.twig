@@ -5,7 +5,7 @@
 
     {{ form_start(pokemon) }}
     {{ form_row(pokemon.name) }}
-    {{ form_row(pokemon.type) }}
+    {{ form_row(pokemon.element) }}
 
     <ul class="attacks list-group"
         data-index="{{ pokemon.attacks|length > 0 ? pokemon.attacks|last.vars.name + 1 : 0 }}"
