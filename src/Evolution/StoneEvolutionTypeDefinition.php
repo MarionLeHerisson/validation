@@ -18,7 +18,7 @@ class StoneEvolutionTypeDefinition implements EvolutionDefinitionInterface
                 'stones' => [
                     new Assert\All([
                         new Assert\Type('string'),
-                    ])
+                    ]),
                 ],
             ]),
         ];

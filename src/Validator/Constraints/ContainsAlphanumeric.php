@@ -11,12 +11,12 @@ class ContainsAlphanumeric extends Constraint
     
     public $path = 'name';
 
-    public function getTargets()
+    public function getTargets(): array|string
     {
-        return self::CLASS_CONSTRAINT;  // WHAT does it applies to
+        return self::CLASS_CONSTRAINT;  // WHAT it applies to
     }
 
-    public function validatedBy()
+    public function validatedBy(): string
     {
         return static::class.'Validator';
     }

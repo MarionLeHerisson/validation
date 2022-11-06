@@ -32,6 +32,16 @@ class EvolutionController extends AbstractController
             ],
         ];
 
+        $exchangeEvolution = [
+            'type' => 'trade',
+            'options' => [
+                'was_traded' => true,
+                'holding_object' => true,
+                'object' => 'ocean teeth',
+//                'stone' => 'water', // This would trigger an error
+            ],
+        ];
+
         $invalidEvolution = [
             'type' => 'tototot',
             'options' => [
@@ -39,12 +49,18 @@ class EvolutionController extends AbstractController
             ],
         ];
         
-        $evoliEvolution = new Evolution();
+        $eeveeEvolution = new Evolution();
         // Replace the evolution below with one of the examples above
-        $evoliEvolution->setType($levelEvolution['type']);
-        $evoliEvolution->setOptions($levelEvolution['options']);
+//        $eeveeEvolution->setType($levelEvolution['type']);
+//        $eeveeEvolution->setOptions($levelEvolution['options']);
 
-        $violations = $validator->validate($evoliEvolution);
+        $eeveeEvolution->setType($stoneEvolution['type']);
+        $eeveeEvolution->setOptions($stoneEvolution['options']);
+
+//        $eeveeEvolution->setType($exchangeEvolution['type']);
+//        $eeveeEvolution->setOptions($exchangeEvolution['options']);
+
+        $violations = $validator->validate($eeveeEvolution);
 
         if (sizeof($violations) > 0) {
             dump($violations[0]->getMessage());
