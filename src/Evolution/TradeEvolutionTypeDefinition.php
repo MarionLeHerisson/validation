@@ -18,10 +18,10 @@ class TradeEvolutionTypeDefinition implements EvolutionDefinitionInterface
                 'was_traded' => [
                     new Assert\Type('bool'),
                 ],
-                'holding_object' => [
+                'holding_item' => [
                     new Assert\Type('bool'),
                 ],
-                'object' => [
+                'item' => [
                     new Assert\Type('string'),
                 ],
             ]),

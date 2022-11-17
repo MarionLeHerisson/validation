@@ -13,7 +13,7 @@ use Symfony\Component\Validator\Validator\ValidatorInterface;
 
 class ExampleController extends AbstractController
 {
-    #[Route('/pokemon', name: 'create_pokemon')]
+    #[Route('/pokemon_form', name: 'create_pokemon')]
     public function new(Request $request, ValidatorInterface $validator): Response
     {        
         $attack = new Attack();
@@ -29,8 +29,8 @@ class ExampleController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             $tortank = $form->getData();
             
-            $errors = $validator->validate($tortank);
-            dump($errors);
+            $violations = $validator->validate($tortank);
+            dump($violations);
 
             return $this->redirectToRoute('task_success');
         }
@@ -39,10 +39,14 @@ class ExampleController extends AbstractController
             'pokemon' => $form,
         ]);
     }
-    
-    #[Route('/different_validations', name: 'different_validations')]
-    public function anotherExample(Request $request): Response
+
+    #[Route('/pokemon', name: 'sandbox')]
+    public function anotherExample(Request $request, ValidatorInterface $validator): Response
     {
+        $pikachu = new Pokemon();
+        $pikachu->setName('Pikachuuuuuuuuuuuuuuuuuuuuuuuu');
         
+        $violations = $validator->validate($pikachu);
+        dd($violations);
     }
 }

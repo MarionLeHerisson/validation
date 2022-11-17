@@ -14,61 +14,75 @@ class EvolutionController extends AbstractController
     #[Route('/evolve', name: 'evolve')]
     public function evolve(Request $request, ValidatorInterface $validator): Response
     {
-        $levelEvolution = [
+        $levelData = [
             'type' => 'level',
             'options' => [
                 'level' => 32,
             ],
         ];
 
-        $stoneEvolution = [
+        $stoneData = [
             'type' => 'stone',
             'options' => [
                 'stones' => [
-                    'water',
+                    1,
                     'fire',
                     'electric',
                 ],
             ],
         ];
 
-        $exchangeEvolution = [
+        $tradeData = [
             'type' => 'trade',
             'options' => [
                 'was_traded' => true,
-                'holding_object' => true,
-                'object' => 'ocean teeth',
+                'holding_item' => true,
+                'item' => 'ocean teeth',
 //                'stone' => 'water', // This would trigger an error
             ],
         ];
 
-        $invalidEvolution = [
-            'type' => 'tototot',
+        $complexData = [
+            'type' => 'complex',
             'options' => [
-                'answer' => 42,
+                'was_traded' => true,
+                'items' => [
+                    1,
+                    'ocean teeth',
+                    'ocean scale',
+                    new Request(),
+                ],
+            ],
+        ];
+
+        $invalidData = [
+            'type' => 'stone',
+            'options' => [
+                'stones' => 42,
             ],
         ];
         
         $eeveeEvolution = new Evolution();
-        // Replace the evolution below with one of the examples above
-//        $eeveeEvolution->setType($levelEvolution['type']);
-//        $eeveeEvolution->setOptions($levelEvolution['options']);
 
-        $eeveeEvolution->setType($stoneEvolution['type']);
-        $eeveeEvolution->setOptions($stoneEvolution['options']);
+        /** Replace the evolution below with one of the examples above **/
+//        $eeveeEvolution->setType($levelData['type']);
+//        $eeveeEvolution->setOptions($levelData['options']);
 
-//        $eeveeEvolution->setType($exchangeEvolution['type']);
-//        $eeveeEvolution->setOptions($exchangeEvolution['options']);
+//        $eeveeEvolution->setType($stoneData['type']);
+//        $eeveeEvolution->setOptions($stoneData['options']);
+
+//        $eeveeEvolution->setType($tradeData['type']);
+//        $eeveeEvolution->setOptions($tradeData['options']);
+
+        $eeveeEvolution->setType($invalidData['type']);
+        $eeveeEvolution->setOptions($invalidData['options']);
 
         $violations = $validator->validate($eeveeEvolution);
 
-        if (sizeof($violations) > 0) {
-            dump($violations[0]->getMessage());
-            dd($violations);
-        }
-        else {
-            dd("Valid evolution, yay \o/");
-        }
+dump($violations);
+        return $this->render('pokemon/evolve.html.twig', [
+            'violations' => $violations,
+        ]);
     }
 }
 

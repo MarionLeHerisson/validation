@@ -3,12 +3,14 @@
 namespace App\Entity;
 
 use App\Enum\Elements;
+//use App\Validator\Constraints\ContainsAlphanumeric;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
 use Symfony\Component\Validator\Context\ExecutionContextInterface;
 
+//#[Assert\Callback('myCustomValidateFunction')]
 #[ORM\Entity]
 #[Assert\EnableAutoMapping()]
 class Pokemon
@@ -18,12 +20,20 @@ class Pokemon
     #[ORM\Column]
     private string $id;
 
+//    #[ORM\Column(type: "string", length: 4)]
+//    /**
+//     * @Assert\NotBlank()
+//     * @Assert\Length(
+//     *      min = 3,
+//     *      max = 12,
+//     * )
+//     */
+//    #[ContainsAlphanumeric]
     #[Assert\NotBlank]
     #[Assert\Length(
         min: 3,
         max: 10
     )]
-    #[ORM\Column(type: "string", length: 25)]
     private string $name;
 
     #[Assert\Choice(
@@ -79,16 +89,18 @@ class Pokemon
         $this->attacks->removeElement($attack);
     }
     
-//    #[Assert\Callback]
-//    public function validate(ExecutionContextInterface $context, $payload): void
+    #[Assert\Callback]
+    public function validate(ExecutionContextInterface $context, $payload): void
+    {
+        if (strlen($this->name) > 10) {
+            $context->buildViolation('Error !')
+                ->addViolation();
+        }
+    }
+
+//    public static function myCustomValidateFunction($object, ExecutionContextInterface $context, $payload): void
 //    {
-//        // check stuff 
-//
-//        if (/* some condition */) {
-//            $context->buildViolation('Error !')
-//                ->atPath('name')
-//                ->addViolation();
-//        }
+//        // Validation logic
 //    }
 }
 

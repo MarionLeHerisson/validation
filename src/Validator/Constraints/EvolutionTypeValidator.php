@@ -28,7 +28,6 @@ class EvolutionTypeValidator extends ConstraintValidator
         if (!$this->definitions->has($type)) {
             $this->context
                 ->buildViolation('The type "{typeName}" is not valid.')
-//                ->atPath('name')
                 ->setParameter('{typeName}', $type)
                 ->addViolation()
             ;
@@ -39,13 +38,14 @@ class EvolutionTypeValidator extends ConstraintValidator
         /** @var $definition EvolutionDefinitionInterface */
         $definition = $this->definitions->get($type);
 
-        $this->context
+        $violations = $this->context
             ->getValidator()
-            ->inContext($this->context)
-//            ->atPath('options')
+            // Without that line, a valid type with invalid options would not be reported.
+            ->inContext($this->context) // With this line, it returns a RecursiveContextualValidator
             ->validate($evolution->getOptions(), $definition->getConstraints())
         ;
 
+        dump($violations);
 //        dd($this->context);
     }
 }

@@ -24,7 +24,7 @@ class Evolution
     ];
 
     #[Assert\NotBlank]
-    #[Assert\Choice(choices: self::EVOLUTION_TYPES)]
+//    #[Assert\Choice(choices: self::EVOLUTION_TYPES)]
     public string $type;
 
     public array $options = [];
@@ -98,7 +98,7 @@ class Evolution
             // By default, all fields are required, so NotBlank are not required here
             new Assert\Collection([
                 'stones' => [
-                    new Assert\Collection([
+                    new Assert\All([
                         new Assert\Type('string'),
                     ])
                 ],

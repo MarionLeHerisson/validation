@@ -1,14 +1,20 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    <h3>Some errors occured :</h3>
-    <ul>
-        {% for error in violations %}
-            <li>{{ error.message }}</li>
-        {% endfor %}
-    </ul>
-
-
-    <h3>The content of <code>$violations</code> looks like :</h3>
-    {{ dump(violations) }}
+    {% if violations|length > 0 %}
+        <h3>Some errors occurred :</h3>
+        <ul>
+            {% for error in violations %}
+                <li>{{ error.message }}<br>
+                    Invalid value was :
+                {{ dump(error.invalidValue) }}
+                </li>
+            {% endfor %}
+        </ul>
+            
+        <h3>The content of <code>$violations</code> looks like :</h3>
+        {{ dump(violations) }}
+    {% else %}
+        <h3>All good !</h3>
+    {% endif %}
 {% endblock %}
