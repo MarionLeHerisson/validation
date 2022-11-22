@@ -1,10 +1,14 @@
 # validation
-> Exemples et tests pour la conférence [Comment valider dynamiquement de la donnée](https://speakerdeck.com/marionleherisson/valider-dynamiquement-de-la-donnee-avec-symfony)
+Exemples and tests for the talk :
 
-### Prérequis 
-- PHP 8.1+ & ses extensions (php8.1-xml, etc)
+🇬🇧 [How to dinamically validate data with Symfony](https://speakerdeck.com/marionleherisson/how-to-dynamically-validate-data-with-symfony)
+
+🇫🇷 [Comment valider dynamiquement de la donnée](https://speakerdeck.com/marionleherisson/valider-dynamiquement-de-la-donnee-avec-symfony)
+
+### Prerequisites 
+- PHP 8.1+ & its extensions (php8.1-xml, ect)
 - Symfony & symfony-cli
 - Composer
 
-Installer le projet avec `composer install`.
-Lancer `symfony server:start` et se rendre sur [http://127.0.0.1:8000/evolve](http://127.0.0.1:8000/evolve)
+Install the projet with `composer install`.
+Run `symfony server:start` and visit [http://127.0.0.1:8000/evolve](http://127.0.0.1:8000/evolve)
